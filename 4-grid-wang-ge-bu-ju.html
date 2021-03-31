@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue动态路由引入和异步组件记录, 前端">
+    <meta name="keywords" content="grid（网格）布局, 前端">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>vue动态路由引入和异步组件记录 | cheapCoder</title>
+    <title>grid（网格）布局 | cheapCoder</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -172,12 +172,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue动态路由引入和异步组件记录</h1>
+                    <h1 class="description center-align post-title">grid（网格）布局</h1>
                 </div>
             </div>
         </div>
@@ -294,12 +294,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vue/">
-                                <span class="chip bg-color">vue</span>
+                            <a href="/tags/grid/">
+                                <span class="chip bg-color">grid</span>
                             </a>
                         
-                            <a href="/tags/router/">
-                                <span class="chip bg-color">router</span>
+                            <a href="/tags/%E5%B8%83%E5%B1%80/">
+                                <span class="chip bg-color">布局</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BD%91%E6%A0%BC/">
+                                <span class="chip bg-color">网格</span>
                             </a>
                         
                     </div>
@@ -314,7 +318,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-20
+                    2020-09-30
                 </div>
                 
 
@@ -335,37 +339,124 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>动态引入的路由组件在打包时路由组件会被单独打包(代码分割 code split),<br>默认不请求加载路由组件打包文件, 当请求需要路由组件时才请求加载,当引入需要的的组件时在<code>Network</code>会增加一个打包文件(一般为<code>/^\d+.js$/</code>格式)。</p>
-<h4 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h4><ul>
-<li><p>component是一个执行就会<code>import()</code>的函数</p>
-<pre><code>myComponent =  () =&gt; import(path)</code></pre>
+                <h1 id="grid（网格）布局"><a href="#grid（网格）布局" class="headerlink" title="grid（网格）布局"></a>grid（网格）布局</h1><h6 id="参考链接-http-www-ruanyifeng-com-blog-2019-03-grid-layout-tutorial-html"><a href="#参考链接-http-www-ruanyifeng-com-blog-2019-03-grid-layout-tutorial-html" class="headerlink" title="参考链接 http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html"></a>参考链接 <a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html">http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</a></h6><h2 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h2><h3 id="display"><a href="#display" class="headerlink" title="display"></a><code>display</code></h3><p>采用网格(grid)布局<br>==注意==: 设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。</p>
+<ul>
+<li><code>grid</code>：块级容器</li>
+<li><code>inline-grid</code>：行内容器</li>
+</ul>
+<h3 id="grid-auto-columns-rows"><a href="#grid-auto-columns-rows" class="headerlink" title="grid-auto-columns / rows"></a><code>grid-auto-columns / rows</code></h3><ul>
+<li>设置自动创建的多余网格的列宽和行高</li>
+</ul>
+<h3 id="grid-template-rows-columns"><a href="#grid-template-rows-columns" class="headerlink" title="grid-template-rows / columns"></a><code>grid-template-rows / columns</code></h3><ul>
+<li><p>指定行列宽度</p>
+<ul>
+<li><p>用像素或百分比</p>
+<pre><code>grid-template-rows: 100px 100px 100px;
+grid-template-columns: 33.3% 33.3% 33.3%;</code></pre>
 </li>
-<li><p>将组件定义对象(component definition)传递给 <code>resolve</code> 回调函数</p>
-<pre><code>Vue.component(component, (resolve, reject) =&gt; {
-  setTimeout(() =&gt; {
-    resolve({
-      template: YourTemplate
-    })
-  }, 100)
-})</code></pre>
+<li><p>repeat()</p>
+<pre><code>  grid-template-rows: repeat（3,100px）</code></pre>
 </li>
-<li><p>使用<code>require</code>引入，这个特殊的 require 语法将指示 webpack 自动将构建后的代码，拆分到不同的 bundle 中，然后通过 Ajax 请求加载。</p>
-<pre><code>Vue.component(component, (resolve) =&gt; {
-  setTimeOut(() =&gt; {
-    require(path, resolve);
-  }, 100)
-})</code></pre>
+<li><p>auto-fill</p>
+<pre><code>grid-template-columns: repeat(auto-fill, 100px);</code></pre>
 </li>
-<li><p>使用返回的<code>promise</code>resolve前<code>import</code></p>
-<pre><code>- Vue.component(component, (resolve) =&gt; {
-    setTimeOut(() =&gt; {
-      import(path).then(resolve);
-    }, 100)
-  })
-- Vue.component(component, Promise.resolve(template对象))
-- Vue.component(component, Promise.resolveDelay(template对象, time))</code></pre>
+<li><p>fr单位(既fraction)</p>
+<pre><code>grid-template-columns: 1fr 1fr;</code></pre>
+</li>
+<li><p>minmax(min, max)</p>
 </li>
 </ul>
+</li>
+<li><p>网格线名称</p>
+<p>注意三行应制定四行网格线</p>
+<ul>
+<li>[name]</li>
+</ul>
+</li>
+</ul>
+<h3 id="grid-template-areas"><a href="#grid-template-areas" class="headerlink" title="grid-template-areas"></a><code>grid-template-areas</code></h3><ul>
+<li>定义区域，名字即为网格网格名</li>
+</ul>
+<pre><code>    grid-template-areas: 'a b c'
+                               'd e f'
+                               'g h i';</code></pre>
+<p>  不要利用的区域用”点”(.)表示<br>  注意，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为<code>区域名-start</code>，终止网格线自动命名为<code>区域名-end</code>。</p>
+<h3 id="grid-row-column-gap"><a href="#grid-row-column-gap" class="headerlink" title="grid-row / column-gap"></a><code>grid-row / column-gap</code></h3><p>根据最新标准，上面三个属性名的grid-前缀已经删除，grid-column-gap和grid-row-gap写成column-gap和row-gap，grid-gap写成gap。</p>
+<ul>
+<li><p>指定行列的间距</p>
+</li>
+<li><p>合并写法</p>
+<ul>
+<li><code>grid-gap: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;</code></li>
+<li><code>gap: &lt;row-gap&gt; &lt;column-gap&gt;;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="grid-auto-flow-先行后列"><a href="#grid-auto-flow-先行后列" class="headerlink" title="grid-auto-flow  先行后列"></a><code>grid-auto-flow</code>  先行后列</h3><ul>
+<li><p>row / column</p>
+<ul>
+<li><p>不考虑空位，保证先后顺序</p>
+<ul>
+<li>链接：<a target="_blank" rel="noopener" href="https://jsbin.com/wapejok/edit?css,output">https://jsbin.com/wapejok/edit?css,output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>row dense / column dense</p>
+<ul>
+<li><p>尽量紧密排列</p>
+<ul>
+<li>链接：<a target="_blank" rel="noopener" href="https://jsbin.com/xutokec/edit?css,output">https://jsbin.com/xutokec/edit?css,output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="单元格内容的位置"><a href="#单元格内容的位置" class="headerlink" title="单元格内容的位置"></a>单元格内容的位置</h3><ul>
+<li><code>align-items</code> 垂直方向</li>
+<li><code>justify-items</code> 水平方向</li>
+<li>合并写法: <code>place-items: &lt;align-items&gt; &lt;justify-items&gt;;</code></li>
+</ul>
+<h3 id="项目整体在容器内的位置"><a href="#项目整体在容器内的位置" class="headerlink" title="项目整体在容器内的位置"></a>项目整体在容器内的位置</h3><ul>
+<li><p><code>justify-content</code> 水平方向</p>
+</li>
+<li><p><code>align-content</code> 垂直方向</p>
+</li>
+<li><p><code>place-content</code>  前两个的合并写法</p>
+<ul>
+<li><code>place-content: &lt;align-items&gt; &lt;justify-items&gt;;</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h2><h3 id="指定项目位置"><a href="#指定项目位置" class="headerlink" title="指定项目位置"></a>指定项目位置</h3><ul>
+<li><p><code>grid-row / column-start / end</code></p>
+<ul>
+<li><p>写法</p>
+<ul>
+<li>网格线数字</li>
+<li>网格线名字</li>
+<li>span：num</li>
+<li>重叠了用<code>z-index</code></li>
+</ul>
+</li>
+<li><p>简写</p>
+<ul>
+<li><code>grid-row / column: &lt;start-line&gt; / &lt;end-line&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="指定项目区域名"><a href="#指定项目区域名" class="headerlink" title="指定项目区域名"></a>指定项目区域名</h3><ul>
+<li><code>grid-area: 区域名</code></li>
+</ul>
+<h3 id="单元格内容的位置-优先"><a href="#单元格内容的位置-优先" class="headerlink" title="单元格内容的位置(优先)"></a>单元格内容的位置(优先)</h3><ul>
+<li><code>align-self</code> 垂直方向</li>
+<li><code>justify-self</code> 水平方向</li>
+<li>合并写法: <code>place-self: &lt;align-items&gt; &lt;justify-items&gt;;</code></li>
+</ul>
+<p><img src="./pic/loading.gif" data-original="/../images/4.%20%20grid%EF%BC%88%E7%BD%91%E6%A0%BC%EF%BC%89%E5%B8%83%E5%B1%80.png" alt="思维导图"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -409,7 +500,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://necessityovo.github.io/archives/2020/09/20/2-vue-router-dong-tai-lu-you/">https://necessityovo.github.io/archives/2020/09/20/2-vue-router-dong-tai-lu-you/</a>
+                    <a href="https://necessityovo.github.io/archives/4-grid-wang-ge-bu-ju.html">https://necessityovo.github.io/archives/4-grid-wang-ge-bu-ju.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -447,12 +538,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
+                                <a href="/tags/grid/">
+                                    <span class="chip bg-color">grid</span>
                                 </a>
                             
-                                <a href="/tags/router/">
-                                    <span class="chip bg-color">router</span>
+                                <a href="/tags/%E5%B8%83%E5%B1%80/">
+                                    <span class="chip bg-color">布局</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BD%91%E6%A0%BC/">
+                                    <span class="chip bg-color">网格</span>
                                 </a>
                             
                         </div>
@@ -498,25 +593,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/09/20/1-betterscroll-cai-keng-ji-lu/">
+                <a href="/5-js-she-ji-mo-shi.html">
                     <div class="card-image">
                         
                         
-                        <img src="./images/loading.gif" data-original="/medias/featureimages/18.jpg" class="responsive-img" alt="betterScroll踩坑记录">
+                        <img src="./pic/loading.gif" data-original="/medias/featureimages/6.jpg" class="responsive-img" alt="js设计模式">
                         
-                        <span class="card-title">betterScroll踩坑记录</span>
+                        <span class="card-title">js设计模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-使用BetterScroll刚npm run serve时无法进行滑动，需要修改BetterScroll的源码，   修改BetterSC/shared-utils/src/dom.ts 中的常量hasTouch为true,   这样就可
+                            一、设计模式
+重中之重！！！：找出变化的地方，使变化的地方与不变的地方分离
+
+1. 单例模式 singleton
+定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点
+
+实现：用变量标志当前的是否已经为该类创造过实例对象，如果创造过则
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-16
                         </span>
                         <span class="publish-author">
                             
@@ -529,12 +629,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
-                    <a href="/tags/scroll/">
-                        <span class="chip bg-color">scroll</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -545,28 +645,31 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/20/2-vue-router-dong-tai-lu-you/">
+                <a href="/3-git-chang-yong-ming-ling.html">
                     <div class="card-image">
                         
                         
-                        <img src="./images/loading.gif" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="vue动态路由引入和异步组件记录">
+                        <img src="./pic/loading.gif" data-original="/medias/featureimages/17.jpg" class="responsive-img" alt="git常用命令">
                         
-                        <span class="card-title">vue动态路由引入和异步组件记录</span>
+                        <span class="card-title">git常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            动态引入的路由组件在打包时路由组件会被单独打包(代码分割 code split),默认不请求加载路由组件打包文件, 当请求需要路由组件时才请求加载,当引入需要的的组件时在Network会增加一个打包文件(一般为/^\d+.js$/格式)。
+                            集中式和分布式版本控制系统的区别
+分布式版本控制系统：每个开发者都有整个代码库的所有版本，在离线状态下开发者可以进行版本管理开发, 等网络恢复再push到仓库中。
 
+
+集中式版本控制系统：每个开发者只有应用代码库的一个版本，在离线状态下开发
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-30
                             </span>
                         <span class="publish-author">
                             
@@ -576,16 +679,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
-                    </a>
-                    
-                    <a href="/tags/router/">
-                        <span class="chip bg-color">router</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>

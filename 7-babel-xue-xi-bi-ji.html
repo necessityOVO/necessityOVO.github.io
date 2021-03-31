@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="在create-react-app创建的项目中对antd的样式按需引入, 前端">
+    <meta name="keywords" content="babel学习笔记, 前端">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>在create-react-app创建的项目中对antd的样式按需引入 | cheapCoder</title>
+    <title>babel学习笔记 | cheapCoder</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -172,12 +172,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">在create-react-app创建的项目中对antd的样式按需引入</h1>
+                    <h1 class="description center-align post-title">babel学习笔记</h1>
                 </div>
             </div>
         </div>
@@ -294,12 +294,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/react/">
-                                <span class="chip bg-color">react</span>
+                            <a href="/tags/babel/">
+                                <span class="chip bg-color">babel</span>
                             </a>
                         
-                            <a href="/tags/antd/">
-                                <span class="chip bg-color">antd</span>
+                            <a href="/tags/es6/">
+                                <span class="chip bg-color">es6</span>
                             </a>
                         
                     </div>
@@ -314,7 +314,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-25
+                    2021-01-08
                 </div>
                 
 
@@ -335,47 +335,139 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="在create-react-app创建的项目中对antd的样式按需引入"><a href="#在create-react-app创建的项目中对antd的样式按需引入" class="headerlink" title="在create-react-app创建的项目中对antd的样式按需引入"></a>在create-react-app创建的项目中对antd的样式按需引入</h1><ol>
-<li><p>下载 customize-cra,  react-app-rewired,  babel-plugin-import</p>
+                <p>学习地址：<a target="_blank" rel="noopener" href="https://www.jiangruitao.com/babel/">姜瑞涛的官方网站</a></p>
 <blockquote>
-<p><code>yarn add customize-cra react-app-rewired babel-plugin-import --dev</code></p>
+<p>babel是一个工具集，主要用于将ES6的js代码转为ES5等向后兼容的js代码</p>
 </blockquote>
-<p>​            customize-cra文档：<a target="_blank" rel="noopener" href="https://github.com/arackaf/customize-cra">https://github.com/arackaf/customize-cra</a></p>
-<p>​            react-app-rewired文档：<a target="_blank" rel="noopener" href="https://github.com/timarney/react-app-rewired">https://github.com/timarney/react-app-rewired</a></p>
-<p>​            babel-plugin-import文档：<a target="_blank" rel="noopener" href="https://github.com/ant-design/babel-plugin-import">https://github.com/ant-design/babel-plugin-import</a></p>
+<h2 id="一、必要部分："><a href="#一、必要部分：" class="headerlink" title="一、必要部分："></a>一、必要部分：</h2><ol>
+<li>babel配置文件：babelrc、babel.js、babel.config.js或package.json</li>
+<li>相关的npm依赖</li>
+<li>需要转码的js文件</li>
+</ol>
+<h2 id="二、作用："><a href="#二、作用：" class="headerlink" title="二、作用："></a>二、作用：</h2><ol>
+<li>语法转换</li>
+<li>补齐api     =&gt; polyfill (babel默认只转换JavaScript语法，不转换api)</li>
+</ol>
+<h2 id="三、版本"><a href="#三、版本" class="headerlink" title="三、版本"></a>三、版本</h2><blockquote>
+<p>Babel是一个工具集，而这个工具集是围绕@babel/core这个核心npm包构成的。每次@babel/core发布新版本的时候，整个工具集的其它npm包也都会跟着升级到与@babel/core相同的版本号，即使它们的代码可能一行都没有改变</p>
+</blockquote>
+<ul>
+<li><p>v7：<code>@babel/core</code></p>
 </li>
+<li><p>v6：<code>babel-core</code></p>
+</li>
+</ul>
+<h2 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h2><blockquote>
+<p>建议使用babel.config.js文件，可以进行逻辑处理</p>
+</blockquote>
+<ol>
+<li><p>预设数组<code>presets</code>：就是一组Babel插件的集合</p>
+<ol>
+<li><strong>@babel/preset-env</strong>：TC39每年发布的进入标准的ES语法的转换器预设集合</li>
+<li>@babel/preset-flow</li>
+<li>@babel/preset-react</li>
+<li>@babel/preset-typescript</li>
+</ol>
+</li>
+<li><p>插件数组<code>plugins</code>：@babel/plugin-transform-runtime常用</p>
+</li>
+<li><p>其他<code>minified</code>、<code>ignore</code>等</p>
+<blockquote>
+<p><strong>plugin与preset的短名称：</strong></p>
+<p>​    如果插件的npm包名称的前缀为 babel-plugin-，可以省略前缀。</p>
+<p>​    如果npm包名称的前缀带有npm作用域@，例如@org/babel-plugin-xxx,短名称可以写成@org/xxx，但babel官方并没有给出明确的说明，所以还是推荐用全称。</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>执行顺序：</strong></p>
+<ul>
+<li>插件比预设先执行</li>
+<li>插件执行顺序是插件数组从前向后执行</li>
+<li>预设执行顺序是预设数组从后向前执行</li>
+</ul>
+<h2 id="五、常用包及配置："><a href="#五、常用包及配置：" class="headerlink" title="五、常用包及配置："></a>五、常用包及配置：</h2><blockquote>
+<p>默认为 v7</p>
+</blockquote>
+<ol>
+<li>@babel/cli：Babel命令行转码工具，如果我们<strong>使用命令行</strong>进行Babel转码就需要安装它。</li>
 </ol>
 <ol start="2">
-<li><p>在package.json的同级创建config-overrides.js文件</p>
+<li>@babel/core：Babel的核心npm包。</li>
+</ol>
+<ol start="3">
+<li><p><strong>@babel/preset-env</strong>(常用)：提供了ES6转换ES5的语法转换规则</p>
+<p>配置：</p>
+<pre class=" language-json"><code class="language-json">presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"@babel/env"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    targets<span class="token operator">:</span> <span class="token punctuation">{</span>        //转码的最低环境
+        <span class="token property">"chrome"</span><span class="token operator">:</span> <span class="token string">"58"</span><span class="token punctuation">,</span>
+        <span class="token property">"ie"</span><span class="token operator">:</span> <span class="token string">"11"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    useBuiltIns<span class="token operator">:</span> <span class="token string">"usage"</span><span class="token punctuation">,</span>    //见下
+    corejs<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>    //取值为<span class="token number">2</span>或<span class="token number">3</span>，指定core-js的使用版本
+    modules<span class="token operator">:</span><span class="token string">"false"</span><span class="token punctuation">,</span>     //见下
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></code></pre>
+<ul>
+<li><p><code>useBuiltIns</code>：</p>
+<p>取值：    </p>
+<ul>
+<li><code>usage</code>：自动引入需要用到的polyfill</li>
+<li><code>entry</code>：需要自行引入polyfill，且不会根据我们实际用到的API进行针对性引入polyfill</li>
+<li><code>false</code></li>
+</ul>
+<blockquote>
+<p>使用<code>entry</code>这种方式的时候，只能<code>import polyfill</code>一次，一般都是在入口文件。如果进行多次import，会发生错误。</p>
+</blockquote>
 </li>
-<li><p>config-overrides.js文件配置</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> override<span class="token punctuation">,</span> fixBabelImports <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'customize-cra'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">override</span><span class="token punctuation">(</span>
-    <span class="token function">fixBabelImports</span><span class="token punctuation">(</span><span class="token string">'import'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>   
-        libraryName<span class="token punctuation">:</span> <span class="token string">'antd'</span><span class="token punctuation">,</span>
-        libraryDirectory<span class="token punctuation">:</span> <span class="token string">'lib'</span><span class="token punctuation">,</span>
-        style<span class="token punctuation">:</span> <span class="token string">"css"</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">//如果是less文件则改为true</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>fixBabelImports配置：<a target="_blank" rel="noopener" href="https://github.com/arackaf/customize-cra/blob/master/api.md#fixbabelimportslibraryname-options">https://github.com/arackaf/customize-cra/blob/master/api.md#fixbabelimportslibraryname-options</a></p>
+<li><p><code>modules</code>：取值可以是<code>amd</code>、<code>umd</code> 、 <code>systemjs</code> 、 <code>commonjs</code> 、<code>cjs</code> 、<code>auto</code> 、<code>false</code>使用的模块语法</p>
+<blockquote>
+<p>在该参数项值是<code>auto</code>或不设置的时候，会发现我们转码前的代码里import都被转码成require了。</p>
+<p>如果我们将参数项改成<code>false</code>，那么就不会对ES6模块化进行更改，还是使用import引入模块。</p>
+</blockquote>
+</li>
+</ul>
 </li>
 </ol>
-<p>   import部分配置找babel-plugin-import：<a target="_blank" rel="noopener" href="https://github.com/ant-design/babel-plugin-import#usage">https://github.com/ant-design/babel-plugin-import#usage</a></p>
 <ol start="4">
-<li><p>修改package.json的<code>script</code>选项</p>
-<p>​    安装react-app-rewired后的：<a target="_blank" rel="noopener" href="https://github.com/timarney/react-app-rewired#3-flip-the-existing-calls-to-react-scripts-in-npm-scripts-for-start-build-and-test">https://github.com/timarney/react-app-rewired#3-flip-the-existing-calls-to-react-scripts-in-npm-scripts-for-start-build-and-test</a></p>
-<pre><code>  /* package.json */
-
-  "scripts": {
--   "start": "react-scripts start",
-+   "start": "react-app-rewired start",
--   "build": "react-scripts build",
-+   "build": "react-app-rewired build",
--   "test": "react-scripts test",
-+   "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
-}</code></pre>
+<li><p><strong>@babel/polyfill</strong>： 垫片，从babel7.4开始，官方不推荐再使用了，因为@babel/polyfill本身其实就是两个npm包的集合：<strong>core-js与regenerator-runtime</strong>。</p>
+<p>官方推荐直接使用这两个npm包。虽然@babel/polyfill还在进行版本升级，但其使用的core-js包为2.x.x版本，而core-js这个包本身已经发布到了3.x.x版本了，@babel/polyfill以后也不会使用3.x.x版本的包了。新版本的core-js实现了许多新的功能，例如数组的includes方法。</p>
+<p>​        <strong>转码环境判断</strong>：如果我们的@babel/preset-env不设置任何参数，Babel就会完全根据package.json的<code>browserslist</code>的配置来做语法转换。如果没有browserslist，那么Babel就会把所有ES6的语法转换成ES5版本。</p>
+<blockquote>
+<p>注意：Babel使用browserslist的配置功能依赖于@babel/preset-env，如果Babel没有配置任何预设或插件，那么Babel对转换的代码会不做任何处理</p>
+</blockquote>
+</li>
+</ol>
+<ol start="5">
+<li><p><strong>@babel/runtime、<del>runtime-corejs2、</del>runtime-corejs3</strong>：原始的preset-env会在所有文件中重复注入辅助函数实现语法转换，将所有辅助函数移入runtime文件中再import入对应文件就不会增大项目体积了</p>
+<p><a target="_blank" rel="noopener" href="https://www.jiangruitao.com/babel/transform-runtime/">示例查看</a></p>
+</li>
+</ol>
+<ol start="6">
+<li><p><strong>@babel/plugin-transform-runtime</strong>: @babel-runtime不能实现自动引入对应的辅助函数，借助此插件实现</p>
+<pre class=" language-json"><code class="language-json">// 配置的默认值
+<span class="token punctuation">{</span> 
+    <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span>
+        <span class="token string">"@babel/plugin-transform-runtime"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">"helpers"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>    // 是否引入辅助包
+            <span class="token property">"corejs"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>    //为<span class="token boolean">false</span>、<span class="token number">2</span>、<span class="token number">3</span>，一般开发JS库的时候才设置为<span class="token number">2</span>或<span class="token number">3</span>
+              <span class="token property">"regenerator"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>    //转换async，await
+              <span class="token property">"useESModules"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>//是否使用es6的模块语法
+              <span class="token property">"absoluteRuntime"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>    //用来自定义@babel/plugin-transform-runtime引入@babel/runtime/模块的路径规则
+              <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"7.0.0-beta.0"</span>    
+//该项主要是和@babel/runtime及其进化版@babel/runtime-corejs2、@babel/runtime-corejs3的版本号有关，这三个包我们只需要根据需要安装一个。我们把安装的npm包的版本号设置给version即可。例如，在上节的babel14例子里，安装的@babel/runtime-corejs3版本是^<span class="token number">7.10</span>.<span class="token number">4</span>，那么配置项version也取’^<span class="token number">7.10</span>.<span class="token number">4</span>’。
+//其实该项不填取默认值就行，目前填写版本号主要是可以减少打包体积。
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<p>​    作用：</p>
+<ul>
+<li>自动移除语法转换后内联的辅助函数，通过引入@babel/runtime/helpers里的辅助函数来替代；</li>
+<li>当代码里使用了core-js的API，自动引入@babel/runtime-corejs3/core-js-stable/，以此来替代全局引入的core-js/stable</li>
+<li>当代码里使用了Generator/async函数，自动引入@babel/runtime/regenerator以此来替代全局引入的regenerator-runtime/runtime；</li>
+</ul>
 </li>
 </ol>
 <script>
@@ -421,7 +513,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://necessityovo.github.io/archives/2020/10/25/6-zai-create-react-app-chuang-jian-de-xiang-mu-zhong-dui-antd-de-yang-shi-an-xu-yin-ru/">https://necessityovo.github.io/archives/2020/10/25/6-zai-create-react-app-chuang-jian-de-xiang-mu-zhong-dui-antd-de-yang-shi-an-xu-yin-ru/</a>
+                    <a href="https://necessityovo.github.io/archives/7-babel-xue-xi-bi-ji.html">https://necessityovo.github.io/archives/7-babel-xue-xi-bi-ji.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -459,12 +551,12 @@ module<span class="token punctuation">.</span>exports <span class="token operato
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/react/">
-                                    <span class="chip bg-color">react</span>
+                                <a href="/tags/babel/">
+                                    <span class="chip bg-color">babel</span>
                                 </a>
                             
-                                <a href="/tags/antd/">
-                                    <span class="chip bg-color">antd</span>
+                                <a href="/tags/es6/">
+                                    <span class="chip bg-color">es6</span>
                                 </a>
                             
                         </div>
@@ -510,29 +602,33 @@ module<span class="token punctuation">.</span>exports <span class="token operato
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/08/7-babel-xue-xi-bi-ji/">
+                <a href="/8-jest-xue-xi-bi-ji.html">
                     <div class="card-image">
                         
                         
-                        <img src="./images/loading.gif" data-original="/medias/featureimages/16.jpg" class="responsive-img" alt="babel学习笔记">
+                        <img src="./pic/loading.gif" data-original="/medias/featureimages/8.jpg" class="responsive-img" alt="jest笔记">
                         
-                        <span class="card-title">babel学习笔记</span>
+                        <span class="card-title">jest笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            学习地址：姜瑞涛的官方网站
+                            1、jest介绍主流前端测试框架：Jasmine，MOCHA，jest
+jest优点：
+新技术
+性能好、功能多、简单易用
+能差异化测试，只测试变化的模块
+快出覆盖率
+多项目并行
 
-babel是一个工具集，主要用于将ES6的js代码转为ES5等向后兼容的js代码
-
-一、必要部分：
-babel配置文件：babelrc、babel.js、babel.config.js或package.json
+单元测试和集成测试的区别
+单元测试unit testing：
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-20
                         </span>
                         <span class="publish-author">
                             
@@ -545,12 +641,12 @@ babel配置文件：babelrc、babel.js、babel.config.js或package.json
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/babel/">
-                        <span class="chip bg-color">babel</span>
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
                     </a>
                     
-                    <a href="/tags/es6/">
-                        <span class="chip bg-color">es6</span>
+                    <a href="/tags/jest/">
+                        <span class="chip bg-color">jest</span>
                     </a>
                     
                 </div>
@@ -564,30 +660,27 @@ babel配置文件：babelrc、babel.js、babel.config.js或package.json
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/10/16/5-js-she-ji-mo-shi/">
+                <a href="/6-zai-create-react-app-chuang-jian-de-xiang-mu-zhong-dui-antd-de-yang-shi-an-xu-yin-ru.html">
                     <div class="card-image">
                         
                         
-                        <img src="./images/loading.gif" data-original="/medias/featureimages/6.jpg" class="responsive-img" alt="js设计模式">
+                        <img src="./pic/loading.gif" data-original="/medias/featureimages/22.jpg" class="responsive-img" alt="在create-react-app创建的项目中对antd的样式按需引入">
                         
-                        <span class="card-title">js设计模式</span>
+                        <span class="card-title">在create-react-app创建的项目中对antd的样式按需引入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、设计模式
-重中之重！！！：找出变化的地方，使变化的地方与不变的地方分离
+                            在create-react-app创建的项目中对antd的样式按需引入
+下载 customize-cra,  react-app-rewired,  babel-plugin-import
 
-1. 单例模式 singleton
-定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点
-
-实现：用变量标志当前的是否已经为该类创造过实例对象，如果创造过则
+yarn add customize-cra r
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-25
                             </span>
                         <span class="publish-author">
                             
@@ -600,12 +693,12 @@ babel配置文件：babelrc、babel.js、babel.config.js或package.json
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">设计模式</span>
+                    <a href="/tags/react/">
+                        <span class="chip bg-color">react</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/antd/">
+                        <span class="chip bg-color">antd</span>
                     </a>
                     
                 </div>
