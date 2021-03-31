@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Nginx 学习笔记, 前端">
+    <meta name="keywords" content="前端">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Nginx 学习笔记 | cheapCoder</title>
+    <title>cheapCoder</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -172,12 +172,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Nginx 学习笔记</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -292,17 +292,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                                <span class="chip bg-color">服务器</span>
-                            </a>
-                        
-                            <a href="/tags/nginx/">
-                                <span class="chip bg-color">nginx</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -314,7 +306,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-23
+                    2021-03-23
                 </div>
                 
 
@@ -335,183 +327,108 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="Nginx-学习笔记"><a href="#Nginx-学习笔记" class="headerlink" title="Nginx 学习笔记"></a><strong>Nginx 学习笔记</strong></h4><p>总结<br>1 、 Nginx 简介<br>（ 1 ） 什么是Nginx 和可以做什么事情<br>（ 2 ） 正向代理<br>（ 3 ） 反向代理<br>（ 4 ） 动静分离</p>
-<p>2 、 在Linux中安装nginx</p>
-<p>3 、 Nginx的常用命令和配置文件</p>
-<p>4 、 Nginx配置实例 1 反向代理</p>
-<p>5 、 Nginx配置实例 2 负载均衡</p>
-<p>6 、 Nginx配置实例 3 动静分离</p>
-<p>7 、 Nginx的高可用集群<br>（ 1 ） nginx配置主从模式<br>（ 2 ） nginx配置双主模式</p>
-<h1 id="Nginx-的简介"><a href="#Nginx-的简介" class="headerlink" title="Nginx 的简介"></a>Nginx 的简介</h1><h5 id="1-、什么是nginx"><a href="#1-、什么是nginx" class="headerlink" title="1 、什么是nginx"></a>1 、什么是nginx</h5><p>Nginx是高性能的HTTP和反向代理的服务器，处理高并发能力是十分强大的，能经受高负<br>载的考验,有报告表明能支持高达 50,000个并发连接数。</p>
-<h5 id="2-、正向代理"><a href="#2-、正向代理" class="headerlink" title="2 、正向代理"></a>2 、正向代理</h5><p>（ 1 ）需要在客户端配置代理服务器进行指定网站访问，隐藏了客户端的IP地址</p>
-<p><img src="./images/loading.gif" data-original="/archives/2021/01/23/9-nginx-xue-xi-bi-ji/Users\10615\AppData\Roaming\Typora\typora-user-images\image-20210109110252280.png" alt="image-20210109110252280"></p>
-<h5 id="3-、反向代理"><a href="#3-、反向代理" class="headerlink" title="3 、反向代理"></a>3 、反向代理</h5><p>服务器配置代理服务器，暴露的是代理服务器地址，隐藏了真实服务器IP地址。</p>
-<p><img src="./images/loading.gif" data-original="/archives/2021/01/23/9-nginx-xue-xi-bi-ji/Users\10615\AppData\Roaming\Typora\typora-user-images\image-20210109110233040.png" alt="image-20210109110233040"></p>
-<h5 id="4-、负载均衡"><a href="#4-、负载均衡" class="headerlink" title="4 、负载均衡"></a>4 、负载均衡</h5><p>增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上，将负载分发到不同的服务器，也就是我们所说的负载均衡</p>
-<p><img src="./images/loading.gif" data-original="/archives/2021/01/23/9-nginx-xue-xi-bi-ji/Users\10615\AppData\Roaming\Typora\typora-user-images\image-20210109111630765.png" alt="image-20210109111630765"></p>
-<h5 id="5-、动静分离"><a href="#5-、动静分离" class="headerlink" title="5 、动静分离"></a>5 、动静分离</h5><p>为了加快网站的解析速度，可以把动态页面和静态页面由不同的服务器来解析，加快解析速<br>度。降低原来单个服务器的压力。</p>
-<blockquote>
-<p>不需要跟数据库交互获取的资源都是静态资源</p>
+                <h1 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h1><h2 id="1-视口"><a href="#1-视口" class="headerlink" title="1. 视口"></a>1. 视口</h2><blockquote>
+<p>目标：了解布局视口、视觉视口、理想视口</p>
 </blockquote>
-<p><img src="./images/loading.gif" data-original="/archives/2021/01/23/9-nginx-xue-xi-bi-ji/Users\10615\AppData\Roaming\Typora\typora-user-images\image-20210109113424433.png" alt="image-20210109113424433"></p>
-<h1 id="Nginx-的安装"><a href="#Nginx-的安装" class="headerlink" title="Nginx 的安装"></a>Nginx 的安装</h1><h5 id="1-、准备工作"><a href="#1-、准备工作" class="headerlink" title="1 、准备工作"></a>1 、准备工作</h5><p>（ 1 ）打开虚拟机，使用远程连接工具连接linux操作系统<br>（ 2 ）到nginx官网下载软件：<a target="_blank" rel="noopener" href="http://nginx.org/">http://nginx.org/</a></p>
-<h5 id="2-、开始进行nginx安装"><a href="#2-、开始进行nginx安装" class="headerlink" title="2 、开始进行nginx安装"></a>2 、开始进行nginx安装</h5><blockquote>
-<p>本来可以用 apt-get 的一起装的，但是想熟悉一下wget</p>
-</blockquote>
-<p>（ 1 ）安装pcre依赖</p>
-<ol>
-<li><p>联网下载pcre压缩文件依赖</p>
-<pre><code>wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz</code></pre>
+<p><strong>视口</strong>（viewport）:就是浏览器显示页面内容的屏幕区域, 视口可以分为<strong>布局视口</strong>、<strong>视觉视口</strong>和<strong>理想视口</strong></p>
+<h3 id="1-1-布局视口-layout-viewport"><a href="#1-1-布局视口-layout-viewport" class="headerlink" title="1.1 布局视口 layout viewport"></a>1.1 布局视口 layout viewport</h3><ul>
+<li><p><strong>概念</strong>: 为了解决早期pc端页面在移动端的显示问题，一般移动端的浏览器设置的默认视口，成为布局视口</p>
 </li>
-<li><p>解压压缩文件</p>
-<pre><code>tar –zxvf pcre-8.37.tar.gz</code></pre>
+<li><p><strong>大白话</strong>：浏览器默认的窗口宽度</p>
 </li>
-<li><p>执行<code>./configure</code></p>
-</li>
-<li><p>回到pcre目录下执行<code>make</code>，最后执行<code>make install</code></p>
-</li>
-<li><p>查看版本：</p>
-<pre><code>pcre-config --version</code></pre>
-</li>
-</ol>
-<p>（ 2 ）安装openssl 、zlib 、 gcc 依赖</p>
-<pre><code>yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel</code></pre>
-<p>（ 3 ）安装nginx</p>
-<ol>
-<li>使用命令解压</li>
-<li>./configure</li>
-<li>make &amp;&amp; make install</li>
-</ol>
-<p>进入目录 /usr/local/nginx/sbin/nginx 启动服务</p>
-<blockquote>
-<p>在windows系统中访问linux中nginx，默认不能访问的，因为防火墙问题<br>（ 1 ）关闭防火墙<br>（ 2 ）开放访问的端口号， 80 端口</p>
-</blockquote>
-<p>查看开放的端口号</p>
-<pre><code>firewall-cmd --list-all</code></pre>
-<p>设置开放的端口号</p>
-<pre><code>firewall-cmd --add-service=http – permanent
-firewall-cmd --add-port=80/tcp --permanent</code></pre>
-<p>重启防火墙</p>
-<pre><code>firewall-cmd **–** reload</code></pre>
-<h1 id="Nginx-的常用的命令"><a href="#Nginx-的常用的命令" class="headerlink" title="Nginx 的常用的命令"></a>Nginx 的常用的命令</h1><p>进入nginx目录中<br>cd /usr/local/nginx/sbin</p>
-<p>1 、查看nginx版本号</p>
-<pre><code>./nginx -v
-或者nginx -v</code></pre>
-<p>2 、启动nginx</p>
-<pre><code>./nginx
-service nginx start</code></pre>
-<p>3 、停止nginx</p>
-<pre><code>./nginx -s stop</code></pre>
-<p>4 、重新加载nginx</p>
-<pre><code>./nginx -s reload</code></pre>
-<h1 id="Nginx-的配置文件"><a href="#Nginx-的配置文件" class="headerlink" title="Nginx 的配置文件"></a>Nginx 的配置文件</h1><h5 id="1-、nginx配置文件位置"><a href="#1-、nginx配置文件位置" class="headerlink" title="1 、nginx配置文件位置"></a>1 、nginx配置文件位置</h5><pre><code>cd /usr/local/nginx/conf/nginx.conf
+<li><p><strong>布局视口大小</strong>：iOS, Android基本都将这个视口分辨率设置为 <strong>980px</strong>，所以PC上的网页大多都能在手机上呈现，只不过元素看上去很小，一般默认可以通过手动缩放网页</p>
+<img src="./images/loading.gif" data-original="./images/2.png">
 
-使用apt-get安装时，配置文件在 /etc/nginx 中</code></pre>
-<h5 id="2-、配置文件中的内容"><a href="#2-、配置文件中的内容" class="headerlink" title="2 、配置文件中的内容"></a>2 、配置文件中的内容</h5><p>（ 1 ）全局块：配置服务器整体运行的配置指令</p>
-<p>​            比如<code>worker_processes 1</code>：处理并发数的配置</p>
-<p>（ 2 ）events块：影响 Nginx 服务器与用户的网络连接</p>
-<p>​            比如<code>worker_connections 1024</code>： 支持的最大连接数为 1024</p>
-<p>（ 3 ）http块<br>还包含两部分：<br>http全局块<br>server块</p>
-<h1 id="Nginx-配置实例-反向代理实例-1"><a href="#Nginx-配置实例-反向代理实例-1" class="headerlink" title="Nginx 配置实例-反向代理实例 1"></a>Nginx 配置实例-反向代理实例 1</h1><h5 id="1-、实现效果"><a href="#1-、实现效果" class="headerlink" title="1 、实现效果"></a>1 、实现效果</h5><p>（ 1 ）打开浏览器，在浏览器地址栏输入地址 <strong><em><a target="_blank" rel="noopener" href="http://www.123.com/">http://www.123.com</a></em></strong> ，跳转到liunx系统tomcat主页面中</p>
-<h5 id="2-、准备工作"><a href="#2-、准备工作" class="headerlink" title="2 、准备工作"></a>2 、准备工作</h5><p>（ 1 ）在liunx系统安装tomcat，使用默认端口 8080</p>
-<ul>
-<li>tomcat安装文件放到liunx系统中，解压</li>
-<li>进入tomcat的bin目录中，./startup.sh启动tomcat服务器</li>
+</li>
 </ul>
-<h3 id="（-2-）对外开放访问的端口"><a href="#（-2-）对外开放访问的端口" class="headerlink" title="（ 2 ）对外开放访问的端口"></a>（ 2 ）对外开放访问的端口</h3><pre><code>firewall-cmd --add-port=80 80 /tcp --permanent
-firewall-cmd **–** reload</code></pre>
-<h3 id="查看已经开放的端口号"><a href="#查看已经开放的端口号" class="headerlink" title="查看已经开放的端口号"></a>查看已经开放的端口号</h3><pre><code>firewall-cmd --list-all</code></pre>
-<p>（ 3 ）在windows系统中通过浏览器访问tomcat服务器</p>
-<h5 id="3-、访问过程的分析"><a href="#3-、访问过程的分析" class="headerlink" title="3 、访问过程的分析"></a>3 、访问过程的分析</h5><p><img src="./images/loading.gif" data-original="/archives/2021/01/23/9-nginx-xue-xi-bi-ji/Users\10615\AppData\Roaming\Typora\typora-user-images\image-20210109115049027.png" alt="image-20210109115049027"></p>
-<h5 id="4-、具体配置"><a href="#4-、具体配置" class="headerlink" title="4 、具体配置"></a>4 、具体配置</h5><p>第一步 在windows系统的host文件进行域名和ip对应关系的配置</p>
-<p>（ 1 ）添加内容在host文件中</p>
-<p>第二步 在nginx进行请求转发的配置（反向代理配置）</p>
-<h5 id="5-、最终测试"><a href="#5-、最终测试" class="headerlink" title="5 、最终测试"></a>5 、最终测试</h5><h1 id="Nginx-配置实例-反向代理实例-2"><a href="#Nginx-配置实例-反向代理实例-2" class="headerlink" title="Nginx 配置实例-反向代理实例 2"></a>Nginx 配置实例-反向代理实例 2</h1><h5 id="1-、实现效果-1"><a href="#1-、实现效果-1" class="headerlink" title="1 、实现效果"></a>1 、实现效果</h5><p>使用nginx反向代理，根据访问的路径跳转到不同端口的服务中<br>nginx监听端口为 9001 ，</p>
-<p>访问 <a target="_blank" rel="noopener" href="http://192.168.17.129:9001/edu/">http://192.168.17.129:9001/edu/</a> 直接跳转到127.0.0.1:808 0<br>访问 <a href="http://">http://</a> 192.168.17.129:9001/vod/ 直接跳转到127.0.0.1:808 1</p>
-<h5 id="2-、准备工作-1"><a href="#2-、准备工作-1" class="headerlink" title="2 、准备工作"></a>2 、准备工作</h5><p>（ 1 ）准备两个tomcat服务器，一个 8080 端口，一个 8081 端口<br>（ 2 ）创建文件夹和测试页面</p>
-<h5 id="3-、具体配置"><a href="#3-、具体配置" class="headerlink" title="3 、具体配置"></a>3 、具体配置</h5><p>（ 1 ）找到nginx配置文件，进行反向代理配置</p>
-<p>（ 2 ）开放对外访问的端口号 9001 8080 8081</p>
-<h5 id="4-、最终测试"><a href="#4-、最终测试" class="headerlink" title="4 、最终测试"></a>4 、最终测试</h5><h1 id="Nginx-配置实例-负载均衡"><a href="#Nginx-配置实例-负载均衡" class="headerlink" title="Nginx 配置实例-负载均衡"></a>Nginx 配置实例-负载均衡</h1><h5 id="1-、实现效果-2"><a href="#1-、实现效果-2" class="headerlink" title="1 、实现效果"></a>1 、实现效果</h5><p>（ 1 ）浏览器地址栏输入地址 <a target="_blank" rel="noopener" href="http://192.168.17.129/edu/a.html%EF%BC%8C%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%95%88%E6%9E%9C%EF%BC%8C%E5%B9%B3%E5%9D%87">http://192.168.17.129/edu/a.html，负载均衡效果，平均</a> 8080<br>和 8081 端口中</p>
-<h5 id="2-、准备工作-2"><a href="#2-、准备工作-2" class="headerlink" title="2 、准备工作"></a>2 、准备工作</h5><p>（ 1 ）准备两台tomcat服务器，一台 8080 ，一台 8081<br>（ 2 ）在两台tomcat里面webapps目录中，创建名称是edu文件夹，在edu文件夹中创建<br>页面a.html，用于测试</p>
-<h5 id="3-、在nginx的配置文件中进行负载均衡的配置"><a href="#3-、在nginx的配置文件中进行负载均衡的配置" class="headerlink" title="3 、在nginx的配置文件中进行负载均衡的配置"></a>3 、在nginx的配置文件中进行负载均衡的配置</h5><h5 id="4-、nginx分配服务器策略"><a href="#4-、nginx分配服务器策略" class="headerlink" title="4 、nginx分配服务器策略"></a>4 、nginx分配服务器策略</h5><p>第一种 轮询（默认）<br>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。</p>
-<p>第二种weight<br>weight代表权重默认为1,权重越高被分配的客户端越多</p>
-<p>第三种ip_hash<br>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器</p>
-<p>第四种fair（第三方）<br>按后端服务器的响应时间来分配请求，响应时间短的优先分配。</p>
-<h1 id="Nginx-配置实例-动静分离"><a href="#Nginx-配置实例-动静分离" class="headerlink" title="Nginx 配置实例-动静分离"></a>Nginx 配置实例-动静分离</h1><h5 id="1-、什么是动静分离"><a href="#1-、什么是动静分离" class="headerlink" title="1 、什么是动静分离"></a>1 、什么是动静分离</h5><p><img src="./images/loading.gif" data-original="/archives/2021/01/23/9-nginx-xue-xi-bi-ji/Users\10615\AppData\Roaming\Typora\typora-user-images\image-20210109115255261.png" alt="image-20210109115255261"></p>
-<p>通过 location 指定不同的后缀名实现不同的请求转发。通过 expires 参数设置，可以使浏<br>览器缓存过期时间，减少与服务器之前的请求和流量。具体 Expires 定义：是给一个资源<br>设定一个过期时间，也就是说无需去服务端验证，直接通过浏览器自身确认是否过期即可，<br>所以不会产生额外的流量。此种方法非常适合不经常变动的资源。（如果经常更新的文件，<br>不建议使用 Expires 来缓存），我这里设置 3d，表示在这 3 天之内访问这个 URL，发送一<br>个请求，比对服务器该文件最后更新时间没有变化，则不会从服务器抓取，返回状态码 304 ，<br>如果有修改，则直接从服务器重新下载，返回状态码 200 。</p>
-<h5 id="2-、准备工作-3"><a href="#2-、准备工作-3" class="headerlink" title="2 、准备工作"></a>2 、准备工作</h5><p>（ 1 ）在liunx系统中准备静态资源，用于进行访问</p>
-<h5 id="3-、具体配置-1"><a href="#3-、具体配置-1" class="headerlink" title="3 、具体配置"></a>3 、具体配置</h5><p>（ 1 ）在nginx配置文件中进行配置</p>
-<h5 id="4-、最终测试-1"><a href="#4-、最终测试-1" class="headerlink" title="4 、最终测试"></a>4 、最终测试</h5><p>（ 1 ）浏览器中输入地址：<a target="_blank" rel="noopener" href="http://192.168.17.129/image/01.jpg">http://192.168.17.129/image/01.jpg</a></p>
-<ul>
-<li>因为配置文件 autoindex on</li>
+<h3 id="1-2-视觉视口-visual-viewport"><a href="#1-2-视觉视口-visual-viewport" class="headerlink" title="1.2 视觉视口 visual viewport"></a>1.2 视觉视口 visual viewport</h3><ul>
+<li><p><strong>概念</strong>：字面意思，它是<strong>用户正在看到的网站的区域</strong>。注意：是网站的区域。</p>
+<p>我们可以通过缩放去操作视觉视口，但不会影响布局视口，布局视口仍保持原来的宽度</p>
+</li>
+<li><img src="./images/loading.gif" data-original="./images/3.png">
+
+</li>
 </ul>
-<p>（ 2 ）在浏览器地址栏输入地址：<a target="_blank" rel="noopener" href="http://192.168.17.129/www/a.html">http://192.168.17.129/www/a.html</a></p>
-<h1 id="Nginx-配置高可用的集群"><a href="#Nginx-配置高可用的集群" class="headerlink" title="Nginx 配置高可用的集群"></a>Nginx 配置高可用的集群</h1><h5 id="1-、什么是nginx高可用"><a href="#1-、什么是nginx高可用" class="headerlink" title="1 、什么是nginx高可用"></a>1 、什么是nginx高可用</h5><p><img src="./images/loading.gif" data-original="/archives/2021/01/23/9-nginx-xue-xi-bi-ji/Users\10615\AppData\Roaming\Typora\typora-user-images\image-20210109115401695.png" alt="image-20210109115401695"></p>
-<p>（ 1 ）需要两台nginx服务器<br>（ 2 ）需要keepalived<br>（ 3 ）需要虚拟ip</p>
-<h5 id="2-、配置高可用的准备工作"><a href="#2-、配置高可用的准备工作" class="headerlink" title="2 、配置高可用的准备工作"></a>2 、配置高可用的准备工作</h5><h3 id="（-1-）需要两台服务器-192-168-17-129-和-192-168-17"><a href="#（-1-）需要两台服务器-192-168-17-129-和-192-168-17" class="headerlink" title="（ 1 ）需要两台服务器 192.168.17.129 和 192.168.17."></a>（ 1 ）需要两台服务器 192.168.17.129 和 192.168.17.</h3><p>（ 2 ）在两台服务器安装nginx<br>（ 3 ）在两台服务器安装keepalived</p>
-<h5 id="3-、在两台服务器安装keepalived"><a href="#3-、在两台服务器安装keepalived" class="headerlink" title="3 、在两台服务器安装keepalived"></a>3 、在两台服务器安装keepalived</h5><p>（ 1 ）使用yum命令进行安装<br>yum install keepalived <strong>–</strong> y</p>
-<p>（ 2 ）安装之后，在etc里面生成目录keepalived，有文件keepalived.conf</p>
-<h5 id="4-、完成高可用配置（主从配置）"><a href="#4-、完成高可用配置（主从配置）" class="headerlink" title="4 、完成高可用配置（主从配置）"></a>4 、完成高可用配置（主从配置）</h5><p>（ 1 ）修改/etc/keepalived/keepalivec.conf配置文件</p>
-<pre><code>global_defs {
-notification_email {
-acassen@firewall.loc
-failover@firewall.loc
-sysadmin@firewall.loc
-}
-notification_email_from Alexandre.Cassen@firewall.loc
-smtp_server 192.168.17.
-smtp_connect_timeout 30
-router_id LVS_DEVEL
-}
-
-vrrp_script chk_http_port {
-
-script "/usr/local/src/nginx_check.sh"
-
-interval 2 #（检测脚本执行的间隔）
-
-weight 2
-
-}
-
-vrrp_instance VI_1 {
-state BACKUP # 备份服务器上将 MASTER 改为 BACKUP
-interface ens33 //网卡
-virtual_router_id 51 # 主、备机的virtual_router_id必须相同
-priority 90 # 主、备机取不同的优先级，主机值较大，备份机值较小
-advert_int 1
-
-authentication {
-auth_type PASS
-auth_pass 1111
-}
-virtual_ipaddress {
-192.168.17.50 // VRRP H虚拟地址
-}
-}</code></pre>
-<p>（ 2 ）在/usr/local/src添加检测脚本</p>
-<pre><code>#!/bin/bash
-A=`ps -C nginx –no-header |wc -l`
-if [ $A -eq 0 ];then
- /usr/local/nginx/sbin/nginx
- sleep 2
- if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then
- killall keepalived
- fi
-fi</code></pre>
-<p>（ 3 ）把两台服务器上nginx和keepalived启动<br>启动nginx：./nginx<br>启动keepalived：systemctl start keepalived.service</p>
-<h5 id="5-、最终测试-1"><a href="#5-、最终测试-1" class="headerlink" title="5 、最终测试"></a>5 、最终测试</h5><p>（ 1 ）在浏览器地址栏输入 虚拟ip地址 192.168.17.</p>
-<p>（ 2 ）把主服务器（192.168.17.129）nginx和keepalived停止，再输入192.168.17.</p>
-<h2 id="Nginx的原理"><a href="#Nginx的原理" class="headerlink" title="Nginx的原理"></a>Nginx的原理</h2><p>1 、mater和worker</p>
-<p>2 、worker如何进行工作的</p>
-<p>3 、一个master和多个woker有好处<br>（ 1 ）可以使用nginx <strong>–</strong> s reload 热部署，利用nginx进行热部署操作<br>（ 2 ）每个woker是独立的进程，如果有其中的一个woker出现问题，其他woker独立的，<br>继续进行争抢，实现请求过程，不会造成服务中断</p>
-<p>4 、设置多少个woker合适</p>
-<p>worker数和服务器的cpu数相等是最为适宜的</p>
-<p>5 、连接数worker_connection<br>第一个：发送请求，占用了woker的几个连接数？<br>答案： 2 或者 4 个</p>
-<p>第二个：nginx有一个master，有四个woker，每个woker支持最大的连接数 1024 ，支持的<br>最大并发数是多少？</p>
+<h3 id="1-3-理想视口-ideal-viewport"><a href="#1-3-理想视口-ideal-viewport" class="headerlink" title="1.3 理想视口 ideal viewport"></a>1.3 理想视口 ideal viewport</h3><ul>
+<li><p><strong>概念</strong>：布局视口的一个理想尺寸，只有当<strong>布局视口（浏览器）的尺寸等于设备屏幕的尺寸</strong>时，才是理想视口</p>
+</li>
+<li><p><strong>设置理想视口方法</strong>：<strong>mate标签</strong></p>
+<img src="./images/loading.gif" data-original="./images/4.png">
+</li>
+<li><p><strong>最标准的viewport设置</strong></p>
 <ul>
-<li>普通的静态访问最大并发数是： worker_connections * worker_processes /2</li>
-<li>而如果是HTTP作 为反向代理来说，最大并发数量应该是worker_connections *<br>worker_processes/4。</li>
+<li>视口宽度和设备保持一致</li>
+<li>视口的默认缩放比例1.0</li>
+<li>不允许用户自行缩放</li>
+<li>最大允许的缩放比例1.0</li>
+<li>最小允许的缩放比例1.0</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-二倍图"><a href="#2-二倍图" class="headerlink" title="2. 二倍图"></a>2. 二倍图</h2><blockquote>
+<p>目标：了解屏幕分辨率、了解图片分辨率、了解视网膜屏、会使用background-size设置背景图的大小、会使用二倍精灵图设置元素背景</p>
+</blockquote>
+<h3 id="2-1-手机屏幕"><a href="#2-1-手机屏幕" class="headerlink" title="2.1 手机屏幕"></a>2.1 手机屏幕</h3><ul>
+<li>通常我们所指的屏幕<code>尺寸</code>，实际上指的是屏幕对角线的长度（一般用英寸来度量）如下图所示</li>
+<li>1英寸 = 2.54cm <strong>绝对单位</strong>；（到哪都不会变的值）</li>
+</ul>
+<img src="./images/loading.gif" data-original="images/015.png">
+
+<h3 id="2-2-物理像素（采光点）"><a href="#2-2-物理像素（采光点）" class="headerlink" title="2.2 物理像素（采光点）"></a>2.2 物理像素（采光点）</h3><ul>
+<li><strong>概念</strong>：客观存在。指计算机显示设备中的最小单位，即一个像素点的大小。每一个像素点可以理解为就是<strong>屏幕上的一个发光点</strong>。每个点可以发一个颜色，就是我们看到的画面</li>
+<li><strong>发展</strong>：早期的屏幕，物理像素点（客观的小灯泡）都比较大，比如玩游戏的超级玛丽的画面的颗粒感很强：随着技术的进步，物理像素点会被做的越来越小；会被做小；</li>
+</ul>
+<img src="./images/loading.gif" data-original="images/023.png">
+
+<h3 id="2-3-屏幕分辨率"><a href="#2-3-屏幕分辨率" class="headerlink" title="2.3 屏幕分辨率"></a>2.3 屏幕分辨率</h3><ul>
+<li><strong>概念</strong>：物理像素点的个数来衡量，表示屏幕水平和垂直方向的物理像素点的个数</li>
+<li>iPhone3和iPhone4是同一个屏幕尺寸下，比较分辨率：</li>
+</ul>
+<img src="./images/loading.gif" data-original="images/019.png">
+
+<img src="./images/loading.gif" data-original="images/021.jpg">
+
+<ul>
+<li><strong>分辨率高的优势</strong>：直观感受，画面细腻；<strong>Retina（视网膜屏幕）</strong>是一种显示技术，可以将把更多的物理像素点压缩至一块屏幕里；从而达到更高的分辨率，并提高屏幕显示的细腻程度，即<strong>1px代表更多的物理像素</strong></li>
+<li><strong>CSS像素  px</strong> ：1px代表的长度是固定的，因此屏幕分辨率越高，1px代表的物理像素就越多</li>
+</ul>
+<img src="./images/loading.gif" data-original="images/99.png">
+
+<h3 id="2-4-图片分辨率"><a href="#2-4-图片分辨率" class="headerlink" title="2.4 图片分辨率"></a>2.4 图片分辨率</h3><ul>
+<li><p><strong>概念</strong>：指图片横纵方向各有多少个物理像素（光点）</p>
+</li>
+<li><p>下图：分辨率640*426 ，提供了多少个色彩发光点（迎合物理像素点）；</p>
+</li>
+</ul>
+<img src="./images/loading.gif" data-original="images/022.jpg">
+
+<ul>
+<li><p><strong>一个萝卜一个坑</strong>：图片在手机上展示时，图片的光点会对应手机的光点（即物理像素点和物理像素点对接）</p>
+<p>图片的光点比作萝卜，手机的采光点比作坑，光点是一一对应的，所以称：一个萝卜一个坑</p>
+</li>
+<li><p>假设：*<em>有200</em>200分辨率**的图片，在不设置图片宽高的情况下，展示在宽度分别是320（iphone3）、640(iphone4)分辨率的手机上，展示的效果如下：</p>
+<img src="./images/loading.gif" data-original="images/020.png">
+</li>
+</ul>
+<ul>
+<li><strong>问题</strong>：相同的图片不设置宽高，在不同的设备下，展示的大小不一样<ul>
+<li>宽度：第2个是第1个的0.5倍；</li>
+<li>面积：第2个是第1个的1/4倍；</li>
+</ul>
+</li>
+<li><strong>原因</strong>：<ul>
+<li>200*200分辨率的图片：200个颜色发光点（萝卜）；</li>
+<li>一个物理像素点发一个颜色：一个萝卜一个坑，屏幕都需要200个物理像素点；</li>
+<li>坑的宽度大小：320（1）；640（0.5）；</li>
+<li>所以显示为上图。</li>
+</ul>
+</li>
+<li><strong>目标</strong>：显示大小一样；</li>
+<li><strong>解决方法</strong><ul>
+<li>直接设置图片宽高相同（不建议）：图片在分辨率高的设备上会模糊</li>
+<li><strong>UI提供二倍图</strong></li>
+</ul>
+</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -556,7 +473,7 @@ fi</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://necessityovo.github.io/archives/2021/01/23/9-nginx-xue-xi-bi-ji/">https://necessityovo.github.io/archives/2021/01/23/9-nginx-xue-xi-bi-ji/</a>
+                    <a href="https://necessityovo.github.io/archives/2021/03/23/11-yi-dong-duan-shi-kou/yi-dong-web-liu-shi-bu-ju/">https://necessityovo.github.io/archives/2021/03/23/11-yi-dong-duan-shi-kou/yi-dong-web-liu-shi-bu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -593,15 +510,7 @@ fi</code></pre>
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                                    <span class="chip bg-color">服务器</span>
-                                </a>
-                            
-                                <a href="/tags/nginx/">
-                                    <span class="chip bg-color">nginx</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -641,9 +550,53 @@ fi</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/03/23/11-yi-dong-duan-shi-kou/yi-dong-web-liu-shi-bu-ju/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="./images/loading.gif" data-original="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            移动端1. 视口
+目标：了解布局视口、视觉视口、理想视口
+
+视口（viewport）:就是浏览器显示页面内容的屏幕区域, 视口可以分为布局视口、视觉视口和理想视口
+1.1 布局视口 layout viewport
+概念: 为了解决早期pc端
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            liheng
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/02/02/10-webpack-bi-ji/">
                     <div class="card-image">
@@ -661,9 +614,9 @@ fi</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -681,64 +634,6 @@ fi</code></pre>
                     
                     <a href="/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">
                         <span class="chip bg-color">构建工具</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/01/20/8-jest-xue-xi-bi-ji/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="./images/loading.gif" data-original="/medias/featureimages/8.jpg" class="responsive-img" alt="jest笔记">
-                        
-                        <span class="card-title">jest笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1、jest介绍主流前端测试框架：Jasmine，MOCHA，jest
-jest优点：
-新技术
-性能好、功能多、简单易用
-能差异化测试，只测试变化的模块
-快出覆盖率
-多项目并行
-
-单元测试和集成测试的区别
-单元测试unit testing：
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            liheng
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">测试</span>
-                    </a>
-                    
-                    <a href="/tags/jest/">
-                        <span class="chip bg-color">jest</span>
                     </a>
                     
                 </div>
